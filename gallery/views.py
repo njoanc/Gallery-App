@@ -10,8 +10,8 @@ import json
     # function that serves the welcome page
     def index(request):
         # get all current photos ordered by the latest
-        all_documents = Feed.objects.all().order_by('-id')
-        # return the index.html template, passing in all the feeds
+        all_documents = Gallery.objects.all().order_by('-id')
+        # return the index.html template, passing in all the gallery
         return render(request, 'index.html', {'all_documents': all_documents})
 
     #function that authenticates the private channel 
@@ -25,14 +25,14 @@ import json
 
         return JsonResponse(json.dumps(auth), safe=False)
     #function that triggers the pusher request
-    def push_feed(request):
+    def push_gallery(request):
         # check if the method is post
         if request.method == 'POST':
             # try form validation
             form = DocumentForm(request.POST, request.FILES)
             if form.is_valid():
                 f = form.save()
-                # trigger a pusher request after saving the new feed element 
+                # trigger a pusher request after saving the new gallery element 
                 pusher.trigger(u'a_channel', u'an_event', {u'description': f.description, u'document': f.document.url})
                 return HttpResponse('ok')
             else:
