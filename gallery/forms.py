@@ -1,7 +1,7 @@
 from django import forms
-from .models import Feed
+from .models import Gallery
 
 class DocumentForm(forms.ModelForm):
     class Meta:
-        model = Feed
+        model = Gallery
         fields = ('description', 'document', )
