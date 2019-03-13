@@ -17,9 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from gallery.views import * 
 
-    urlpatterns = [
-        url(r'^$', index),
-        url(r'^push_gallery$', push_gallery),
-        url(r'^pusher_authentication', pusher_authentication),
-        url(r'^admin/', admin.site.urls),
-    ]
+urlpatterns = [
+    url(r'^$', index),
+    url(r'^push_gallery$', push_gallery),
+    url(r'^pusher_authentication', pusher_authentication),
+    url(r'^admin/', admin.site.urls),
+]

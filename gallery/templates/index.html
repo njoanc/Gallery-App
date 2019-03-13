@@ -45,19 +45,20 @@
                 });
                 return false;
             }
-            var pusher = new Pusher('XXX_APP_KEY', {
+            var pusher = new Pusher('baaa6ee90489816a2156', {
                 encrypted: true,
-                cluster: 'XXX_APP_CLUSTER',
+                cluster: 'ap2',
                 authTransport: 'jsonp',
                 authEndpoint: '/pusher_authentication'
             });
             var my_channel = pusher.subscribe('private-a_channel');
             my_channel.bind("an_event", function(doc) {
                 alert("message");
-                var new_message = `<span>
-                            <h2>` + doc.description + `</h2>
-                            <img  src="` + doc.document + `">
-                        </span>`;
+                var new_message = 
+                `<span>
+                    <h2>` + doc.description + `</h2>
+                    <img  src="` + doc.document + `">
+                    </span>`;
                 $('#gallery').prepend(new_message);
             });
         </script>
